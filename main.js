@@ -10,13 +10,6 @@ function platform_fill_rect(x,y,w,h,color) {
   ctx.fillRect(x, y, w, h);
 }
 
-const platform_mouse = {
-  x: undefined,
-  y: undefined,
-  width: 0.1,
-  height: 0.1,
-};
-
 const render = WebAssembly.instantiateStreaming(fetch('./build/game.wasm'), {
   env: {
     platform_fill_rect

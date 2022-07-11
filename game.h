@@ -2,11 +2,12 @@
 #define WORLD_H_
 
 #define FACTOR 50
+#define PADDING 5
 #define WIDTH (16*FACTOR)
 #define HEIGHT (9*FACTOR)
 #define CELL_SIZE 25
 #define COLS (WIDTH/CELL_SIZE)
-#define ROWS (WIDTH/CELL_SIZE)
+#define ROWS (HEIGHT/CELL_SIZE)
 
 // hexcodes are little endian
 #define COLOR_BG 0xFFFF0000 // blue
@@ -28,9 +29,7 @@ typedef struct {
 } Cell;
 
 typedef struct {
-  i32 width;
-  i32 height;
-  Cell** grid;
+  Cell grid[COLS][ROWS];
 } WorldState;
 
 void platform_fill_rect(i32 x, i32 y, i32 w, i32 h, u32 color);
@@ -38,7 +37,7 @@ int view_width(void);
 int view_height(void);
 void render_background(void);
 void view_render(void);
-void render_cell(i32 x, i32 y);
+void render_cell(Cell cell);
 WorldState initialize_world(void);
 
 #endif // WORLD_H_
