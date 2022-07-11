@@ -1,0 +1,23 @@
+const app = document.getElementById("app");
+const ctx = app.getContext("2d");
+console.log(ctx);
+
+function platform_fill_rect(x,y,w,h,color) {
+  r = ((color>>(0*8))&0xFF).toString(16).padStart(2, '0');
+  g = ((color>>(1*8))&0xFF).toString(16).padStart(2, '0');
+  b = ((color>>(2*8))&0xFF).toString(16).padStart(2, '0');
+  ctx.fillStyle = "#"+r+g+b;
+  ctx.fillRect(x, y, w, h);
+}
+
+const render = WebAssembly.instantiateStreaming(fetch('./build/render.wasm'), {
+  env: {
+    platform_fill_rect
+  }
+});
+
+render.then((w) => {
+  app.width = w.instance.exports.view_width();
+  app.height = w.instance.exports.view_height();
+  w.instance.exports.view_render();
+});
