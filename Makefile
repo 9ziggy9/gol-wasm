@@ -1,6 +1,6 @@
 CC=clang
 CFLAGS=--target=wasm32 --no-standard-libraries -Wl,--export-all -Wl,--no-entry -Wl,--allow-undefined
-INCLUDES=-I './include/render.h'
+INCLUDES=-I './include/world.h'
 
 all: render
 
