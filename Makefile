@@ -1,11 +1,11 @@
 CC=clang
 CFLAGS=--target=wasm32 --no-standard-libraries -Wl,--export-all -Wl,--no-entry -Wl,--allow-undefined
-INCLUDES=-I './include/world.h'
+INCLUDES=-I './game.h'
 
-all: render
+all: game
 
-render: src/render.c
-	$(CC) $(INCLUDES) $(CFLAGS) ./src/render.c  -o ./build/render.wasm
+game: game.c
+	$(CC) $(INCLUDES) $(CFLAGS) ./game.c  -o ./build/game.wasm
 
 clean:
 	rm -rf ./build/*.wasm

@@ -17,7 +17,7 @@ const platform_mouse = {
   height: 0.1,
 };
 
-const render = WebAssembly.instantiateStreaming(fetch('./build/render.wasm'), {
+const render = WebAssembly.instantiateStreaming(fetch('./build/game.wasm'), {
   env: {
     platform_fill_rect
   }

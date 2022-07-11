@@ -1,4 +1,4 @@
-#include "../include/world.h"
+#include "game.h"
 
 int view_width(void) {
   return WIDTH;
@@ -20,4 +20,3 @@ void view_render(void) {
   render_background();
   render_cell(10,10);
 }
-
