@@ -56,13 +56,17 @@ void view_render(WorldState *world) {
   render_world(world);
 }
 
-void state_transition(WorldState *world) {
+void world_transition(WorldState *world) {
   Cell *test_cell = &world->grid[10][10];
   if (test_cell->state == DEAD) give_life(test_cell);
   else give_death(test_cell);
 }
 
-void game_update(float dt) {
+void game_update(WorldState *world, float dt) {
+  
+}
+
+void game_render(void) {
   WorldState world = initialize_world();
   view_render(&world);
 }

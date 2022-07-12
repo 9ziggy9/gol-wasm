@@ -10,14 +10,22 @@ function platform_fill_rect(x,y,w,h,color) {
   ctx.fillRect(x, y, w, h);
 }
 
-const render = WebAssembly.instantiateStreaming(fetch('./build/game.wasm'), {
+const wasm = WebAssembly.instantiateStreaming(fetch('./build/game.wasm'), {
   env: {
     platform_fill_rect
   }
 });
 
-render.then((w) => {
+function run() {
+  wasm.then(w => {
+    w.instance.exports.game_render();
+    // app.height = w.instance.exports.view_render();
+    window.requestAnimationFrame(run);
+  });
+}
+
+wasm.then(w => {
   app.width = w.instance.exports.view_width();
   app.height = w.instance.exports.view_height();
-  w.instance.exports.game_run();
+  window.requestAnimationFrame(run);
 });

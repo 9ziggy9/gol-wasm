@@ -8,6 +8,7 @@
 #define CELL_SIZE 25
 #define COLS (WIDTH/CELL_SIZE)
 #define ROWS (HEIGHT/CELL_SIZE)
+#define TIME_STEP 0.1f
 
 // hexcodes are little endian
 #define COLOR_BG 0xFF606060 // dark gray
@@ -31,6 +32,7 @@ typedef struct {
 
 typedef struct {
   Cell grid[COLS][ROWS];
+  float cooldown;
 } WorldState;
 
 void platform_fill_rect(i32 x, i32 y, i32 w, i32 h, u32 color);
@@ -43,6 +45,8 @@ WorldState initialize_world(void);
 void state_transition(WorldState *world);
 void give_life(Cell* cell);
 void give_death(Cell* cell);
-void game_update(float dt);
+void game_render(void);
+void world_transition(WorldState *world);
+void game_update(WorldState *world, float dt);
 
 #endif // WORLD_H_
