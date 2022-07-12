@@ -10,8 +10,8 @@
 #define ROWS (HEIGHT/CELL_SIZE)
 
 // hexcodes are little endian
-#define COLOR_BG 0xFFFF0000 // blue
-#define COLOR_FG 0xFFFFFFFF // white
+#define COLOR_BG 0xFF606060 // dark gray
+#define COLOR_FG 0xFF909090 // light gray
 #define COLOR_CELL1 COLOR_BG
 #define COLOR_CELL2 COLOR_FG
 

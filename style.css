@@ -1,6 +1,27 @@
 /* hello world */
+html, body {
+    position: absolute;
+    background-color: #000000;
+    margin:0;
+    height:100%;
+    widtH:100%;
+}
+
+#root {
+    position:fixed;
+    width:100%;
+    height:100%;
+    margin:0;
+}
+
+.app-container {
+    padding: 100px;
+    flex-direction: column;
+}
 
 .container-grid {
+    align-content: center;
+    justify-items: center;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: repeat(2, 1fr);

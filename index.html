@@ -7,15 +7,17 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="container-grid">
-      <div class="app-view">
-	<canvas id="app"></canvas>
+    <div class="app-container">
+      <div class="container-grid">
+	<div class="app-view">
+	  <canvas id="app"></canvas>
+	</div>
+	<div class="toolbar">
+	  <button type="button">start</button>
+	  <button type="button">stop</button>
+	</div>
+	<script src="main.js"></script>
       </div>
-      <div class="toolbar">
-	<button style="position:relative" type="button">start</button>
-	<button style="position:relative" type="button">stop</button>
-      </div>
-      <script src="main.js"></script>
     </div>
   </body>
 </html>
