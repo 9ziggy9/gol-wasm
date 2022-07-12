@@ -1,0 +1,17 @@
+/* hello world */
+
+.container-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 1px;
+    grid-row-gap: 0px;
+}
+
+.app-view {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.toolbar {
+    grid-area: 2 / 1 / 3 / 2;
+}
