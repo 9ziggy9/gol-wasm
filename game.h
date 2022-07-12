@@ -14,6 +14,7 @@
 #define COLOR_FG 0xFF909090 // light gray
 #define COLOR_CELL1 COLOR_BG
 #define COLOR_CELL2 COLOR_FG
+#define COLOR_ALIVE 0xFF43B03C // green
 
 typedef unsigned int u32;
 typedef int i32;
@@ -36,8 +37,11 @@ void platform_fill_rect(i32 x, i32 y, i32 w, i32 h, u32 color);
 int view_width(void);
 int view_height(void);
 void render_background(void);
-void view_render(void);
+void view_render(WorldState *world);
 void render_cell(Cell cell);
 WorldState initialize_world(void);
+void give_life(Cell* cell);
+void give_death(Cell* cell);
+void game_update(float dt);
 
 #endif // WORLD_H_

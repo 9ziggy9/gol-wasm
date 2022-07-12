@@ -15,10 +15,10 @@ void render_background(void) {
 void render_cell(Cell cell) {
   if (cell.state == ALIVE) {
     platform_fill_rect(cell.x, cell.y, CELL_SIZE - PADDING,
-		       CELL_SIZE - PADDING, COLOR_FG);
+		       CELL_SIZE - PADDING, COLOR_ALIVE);
   } else {
     platform_fill_rect(cell.x, cell.y, CELL_SIZE - PADDING,
-		       CELL_SIZE - PADDING, COLOR_BG);
+		       CELL_SIZE - PADDING, COLOR_FG);
   }
 }
 
@@ -43,8 +43,20 @@ void render_world(WorldState *world) {
   }
 }
 
-void view_render(void) {
+void give_life(Cell* cell) {
+  cell->state = ALIVE;
+}
+
+void give_death(Cell* cell) {
+  cell->state = DEAD;
+}
+
+void view_render(WorldState *world) {
   render_background();
+  render_world(world);
+}
+
+void game_run() {
   WorldState world = initialize_world();
-  render_world(&world);
+  view_render(&world);
 }

@@ -19,5 +19,5 @@ const render = WebAssembly.instantiateStreaming(fetch('./build/game.wasm'), {
 render.then((w) => {
   app.width = w.instance.exports.view_width();
   app.height = w.instance.exports.view_height();
-  w.instance.exports.view_render();
+  w.instance.exports.game_run();
 });
