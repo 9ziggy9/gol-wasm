@@ -40,6 +40,7 @@ void render_background(void);
 void view_render(WorldState *world);
 void render_cell(Cell cell);
 WorldState initialize_world(void);
+void state_transition(WorldState *world);
 void give_life(Cell* cell);
 void give_death(Cell* cell);
 void game_update(float dt);

@@ -28,7 +28,7 @@ WorldState initialize_world(void) {
     for (i32 x = 0; x < COLS; x++) {
       Cell current = {.x = CELL_SIZE * x + PADDING,
 		      .y = CELL_SIZE * y + PADDING,
-		      .state = ALIVE};
+		      .state = DEAD};
       world.grid[x][y] = current;
     }
   }
@@ -56,7 +56,13 @@ void view_render(WorldState *world) {
   render_world(world);
 }
 
-void game_run() {
+void state_transition(WorldState *world) {
+  Cell *test_cell = &world->grid[10][10];
+  if (test_cell->state == DEAD) give_life(test_cell);
+  else give_death(test_cell);
+}
+
+void game_update(float dt) {
   WorldState world = initialize_world();
   view_render(&world);
 }
